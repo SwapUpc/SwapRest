@@ -1,0 +1,19 @@
+SignUp JSON
+{
+    "name": "Daniel",
+    "lastname": "Jimenez",
+    "username": "DanielJ",
+    "email": "daniel@gmail.com",
+    "password" : "123456",
+    "birthday": "1995-09-15",
+    "mobilephone": "941539912",
+    "description": "responsable y paciente",
+    "teach": true,
+    "role": ["admin"]
+}
+
+SignIn JSON
+{
+    "username": "DanielJ",
+    "password" : "123456"
+}
