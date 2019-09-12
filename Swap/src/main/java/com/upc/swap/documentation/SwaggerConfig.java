@@ -16,10 +16,10 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class SwaggerConfig {
 	public static final Contact API_CONTACT = 
-			new Contact("Daniel Jimenez", "https://github.com/DanielJimenezC", "danieljimenezcanales@gmail.com");
+			new Contact("Swap", "https://github.com/SwapUpc", "danieljimenezcanales@gmail.com");
 	public static final ApiInfo API_INFO = 
-			new ApiInfo("Prueba Spring Security",
-					"Proyecto de Prueba", 
+			new ApiInfo("Swap REST Service",
+					"Swap REST Service", 
 					"1.0", 
 					"http://www.google.com", 
 					API_CONTACT, 

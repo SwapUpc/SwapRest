@@ -28,6 +28,8 @@ import com.upc.swap.util.request.SignIn;
 import com.upc.swap.util.request.SignUp;
 import com.upc.swap.util.response.JwtResponse;
 
+import io.swagger.annotations.ApiOperation;
+
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/auth")
@@ -45,6 +47,7 @@ public class AuthRestController {
 	@Autowired
 	JwtProvider jwtProvider;
 	
+	@ApiOperation(value="SignIn Method")
 	@PostMapping("/signin")
 	public ResponseEntity<?> authenticateUser(@Valid @RequestBody SignIn signIn){
 		Authentication authentication = authenticationManager.authenticate(
@@ -57,6 +60,7 @@ public class AuthRestController {
 		return ResponseEntity.ok(new JwtResponse(token));
 	}
 	
+	@ApiOperation(value="SignUp Method")
 	@PostMapping("/signup")
 	public ResponseEntity<String> registerUser(@Valid @RequestBody SignUp signUp){
 		if(userServ.existsByUsername(signUp.getUsername())) {
