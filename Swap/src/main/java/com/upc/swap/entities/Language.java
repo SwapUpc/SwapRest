@@ -1,6 +1,4 @@
 package com.upc.swap.entities;
-
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,14 +19,13 @@ public class Language {
 	
 	@NotBlank
 	@Size(min=3, max=255, message="El campo no tiene la longuitud deseada - entre 3 y 255")
-	@Column(name="name")
 	@ApiModelProperty(value="Language's Name")
-	private String name;
+	private String language;
 
 	public Language() {}
 	
-	public Language(String name) {
-		this.name = name;
+	public Language(String language) {
+		this.language = language;
 	}
 
 	public int getId() {
@@ -37,10 +34,10 @@ public class Language {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getName() {
-		return name;
+	public String getLanguage() {
+		return language;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setLanguage(String language) {
+		this.language = language;
 	}
 }

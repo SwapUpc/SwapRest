@@ -21,12 +21,12 @@ public class Level {
 	@NotBlank
 	@Size(min=3, max=255, message="El campo no tiene la longuitud deseada - entre 3 y 255")
 	@ApiModelProperty(value="Level's name")
-	private String name;
+	private String level;
 	
 	public Level() {}
 	
-	public Level(String name) {
-		this.name = name;
+	public Level(String level) {
+		this.level = level;
 	}
 	
 	public int getId() {
@@ -35,10 +35,10 @@ public class Level {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getName() {
-		return name;
+	public String getLevel() {
+		return level;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setLevel(String level) {
+		this.level = level;
 	}
 }

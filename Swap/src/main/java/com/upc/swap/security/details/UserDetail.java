@@ -3,6 +3,7 @@ package com.upc.swap.security.details;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -11,6 +12,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.common.base.Objects;
+import com.upc.swap.entities.Language;
+import com.upc.swap.entities.Level;
 import com.upc.swap.entities.User;
 
 public class UserDetail implements UserDetails {
@@ -28,12 +31,13 @@ public class UserDetail implements UserDetails {
 	private String mobilephone;
 	private String description;
 	private boolean teach;
+	private Map<Language, Level> language;
 	
 	private Collection<? extends GrantedAuthority> authorities;
 	
 	public UserDetail(int id, String name, String lastname, String username,
 			String email, String password, Date birthday, String mobilephone,
-			String description, boolean teach, Collection<? extends GrantedAuthority> authorities) {
+			String description, boolean teach, Map<Language, Level> languages, Collection<? extends GrantedAuthority> authorities) {
 		this.id = id;
 		this.name = name;
 		this.lastname = lastname;
@@ -45,6 +49,7 @@ public class UserDetail implements UserDetails {
 		this.description = description;
 		this.teach = teach;
 		this.authorities = authorities;
+		this.language = languages;
 	}
 	
 	public static UserDetail build(User user) {
@@ -62,10 +67,19 @@ public class UserDetail implements UserDetails {
 				user.getMobilephone(),
 				user.getDescription(),
 				user.isTeach(),
+				user.getLanguage(),
 				authorities
 		);
 	}
-	
+
+	public Map<Language, Level> getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(Map<Language, Level> language) {
+		this.language = language;
+	}
+
 	public int getId() {
 		return id;
 	}

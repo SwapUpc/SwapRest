@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.upc.swap.security.details.UserDetail;
 import com.upc.swap.security.jwt.JwtProvider;
 
+import io.swagger.annotations.ApiOperation;
+
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 public class TestController {
@@ -19,6 +21,7 @@ public class TestController {
 	JwtProvider jwtProvider;
 	
 	@GetMapping("/api/test/user")
+	@ApiOperation(value="User Method")
 	@PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
 	public String userAccess() {
 		Authentication authInfo = SecurityContextHolder.getContext().getAuthentication();
@@ -28,6 +31,7 @@ public class TestController {
 	}
 
 	@GetMapping("/api/test/pm")
+	@ApiOperation(value="PM Method")
 	@PreAuthorize("hasRole('PM') or hasRole('ADMIN')")
 	public String projectManagementAccess() {
 		Authentication authInfo = SecurityContextHolder.getContext().getAuthentication();
@@ -38,6 +42,7 @@ public class TestController {
 	
 	@GetMapping("/api/test/admin")
 	@PreAuthorize("hasRole('ADMIN')")
+	@ApiOperation(value="Admin Method")
 	public String adminAccess() {
 		Authentication authInfo = SecurityContextHolder.getContext().getAuthentication();
 		UserDetail userPrincipal = (UserDetail)authInfo.getPrincipal();

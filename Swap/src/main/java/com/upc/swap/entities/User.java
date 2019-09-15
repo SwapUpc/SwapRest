@@ -2,7 +2,9 @@ package com.upc.swap.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -14,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.MapKeyJoinColumn;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotBlank;
@@ -92,6 +95,14 @@ public class User implements Serializable{
 		joinColumns = @JoinColumn(name = "user_id"), 
 		inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles = new HashSet<>();
+	
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "user_languages",
+			joinColumns = @JoinColumn(name = "user_id"),
+			inverseJoinColumns = @JoinColumn(name = "level_id"))
+	@MapKeyJoinColumn(name="language_id")
+    //@ElementCollection
+    private Map<Language, Level> language = new HashMap<>();
 	
 	public User() {}
 	
@@ -180,5 +191,13 @@ public class User implements Serializable{
 	}
 	public void setTeach(boolean teach) {
 		this.teach = teach;
+	}
+
+	public Map<Language, Level> getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(Map<Language, Level> language) {
+		this.language = language;
 	}
 }

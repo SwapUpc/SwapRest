@@ -1,6 +1,7 @@
 package com.upc.swap.util.request;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import javax.validation.constraints.Email;
@@ -42,13 +43,33 @@ public class SignUp {
     private String mobilephone;
     
     @Size(max = 255)
-    private String description;
+    private String descriptions;
     
     private boolean teach;
     
     private Set<String> role;
+    
+    private List<Integer> language;
+    
+    private List<Integer> level;
+    
+	public List<Integer> getLanguage() {
+		return this.language;
+	}
 
-    public String getName() {
+	public void setLanguage(List<Integer> language) {
+		this.language = language;
+	}
+
+	public List<Integer> getLevel() {
+		return this.level;
+	}
+
+	public void setLevel(List<Integer> level) {
+		this.level = level;
+	}
+
+	public String getName() {
         return name;
     }
 
@@ -81,11 +102,11 @@ public class SignUp {
 	}
 
 	public String getDescription() {
-		return description;
+		return descriptions;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setDescription(String descriptions) {
+		this.descriptions = descriptions;
 	}
 
 	public boolean isTeach() {

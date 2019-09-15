@@ -1,6 +1,9 @@
 package com.upc.swap.controller;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.validation.Valid;
@@ -18,11 +21,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.upc.swap.entities.Language;
+import com.upc.swap.entities.Level;
 import com.upc.swap.entities.Role;
 import com.upc.swap.entities.RoleName;
 import com.upc.swap.entities.User;
 import com.upc.swap.repository.IRoleRepo;
 import com.upc.swap.security.jwt.JwtProvider;
+import com.upc.swap.service.ILanguageServ;
+import com.upc.swap.service.ILevelServ;
 import com.upc.swap.service.IUserServ;
 import com.upc.swap.util.request.SignIn;
 import com.upc.swap.util.request.SignUp;
@@ -43,6 +50,12 @@ public class AuthRestController {
 	
 	@Autowired
 	IRoleRepo rolRepo;
+	
+	@Autowired
+	ILanguageServ languageServ;
+	
+	@Autowired
+	ILevelServ levelServ;
 	
 	@Autowired
 	JwtProvider jwtProvider;
@@ -74,8 +87,21 @@ public class AuthRestController {
 				signUp.getEmail(), signUp.getPassword(), signUp.getBirthday(),
 				signUp.getMobilephone(), signUp.getDescription(), signUp.isTeach(), true);
 		
+		List<Integer> strLanguages = signUp.getLanguage();
+		List<Integer> strLevels = signUp.getLevel();
 		Set<String> strRoles = signUp.getRole();
 		Set<Role> roles = new HashSet<>();
+		Map<Language, Level> language = new HashMap<Language, Level>();;
+		
+		for(int i = 0; i < strLanguages.size(); i++) {
+			int ind = strLanguages.get(i);
+			int ind2 = strLevels.get(i);
+			
+			Language lang = languageServ.findByid(ind).get();
+			Level lev = levelServ.findByid(ind2).get();
+			
+			language.put(lang, lev);
+		}
 		
 		strRoles.forEach(role -> {
 			switch(role) {
@@ -91,6 +117,7 @@ public class AuthRestController {
 			}
 		});
 		
+		user.setLanguage(language);
 		user.setRoles(roles);
 		userServ.save(user);
 		

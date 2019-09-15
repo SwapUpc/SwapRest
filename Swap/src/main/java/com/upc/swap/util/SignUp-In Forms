@@ -1,15 +1,17 @@
 SignUp JSON
 {
-    "name": "Daniel",
+	"name": "Daniel",
     "lastname": "Jimenez",
-    "username": "DanielJ",
-    "email": "daniel@gmail.com",
+    "username": "DanielJ2453",
+    "email": "danield353f@gmail.com",
     "password" : "123456",
     "birthday": "1995-09-15",
     "mobilephone": "941539912",
     "description": "responsable y paciente",
     "teach": true,
-    "role": ["admin"]
+    "role": ["admin"],
+    "language": [2, 1],
+    "level": [5, 1]
 }
 
 SignIn JSON
