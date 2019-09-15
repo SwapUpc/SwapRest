@@ -12,9 +12,12 @@ import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import io.swagger.annotations.ApiModelProperty;
+
 public class SignUp {
 	@NotBlank
     @Size(min = 3, max = 255)
+	@ApiModelProperty(value="SignUp User's name")
     private String name;
 
 	@NotBlank
