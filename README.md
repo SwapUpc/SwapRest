@@ -11,6 +11,6 @@ Documentation is avaible in <https://swaprest.azurewebsites.net/swagger> or in t
 
 ## Our Team
 - Alosilla, Diego
-- Gleixner, Pierte
+- Gleixner, Pieter
 - Jimenez, Daniel
 - Loa, Andres
