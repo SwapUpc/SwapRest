@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="swapdb-Web.config Connection String" description="swapdb Cadena de conexión que usa la aplicación en web.config para obtener acceso a la base de datos." defaultValue="data source=.;initial catalog=swaprestdb;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="D:\\Git\\Prueba\\SwapRest\\SwapRest\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='swapdb']/@connectionString" />
+  </parameter>
+  <parameter name="swapdb_DatabasePublish-Web.config Connection String" description="swapdb_DatabasePublish Cadena de conexión que usa la aplicación en web.config para obtener acceso a la base de datos." defaultValue="swapdb_DatabasePublish.ConnetionString" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="D:\\Git\\Prueba\\SwapRest\\SwapRest\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='swapdb_DatabasePublish']/@connectionString" />
+  </parameter>
+</parameters>
